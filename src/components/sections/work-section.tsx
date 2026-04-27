@@ -1,4 +1,29 @@
 import { useReveal } from "@/hooks/use-reveal"
+import Icon from "@/components/ui/icon"
+
+const leaderboard = [
+  {
+    number: "01",
+    title: "MOONX",
+    category: "Токен сообщества",
+    stat: "+2,847%",
+    direction: "left",
+  },
+  {
+    number: "02",
+    title: "DEXFIRE",
+    category: "DeFi протокол",
+    stat: "+1,203%",
+    direction: "right",
+  },
+  {
+    number: "03",
+    title: "VAULTCOIN",
+    category: "Стейкинг токен",
+    stat: "+891%",
+    direction: "left",
+  },
+]
 
 export function WorkSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -15,36 +40,14 @@ export function WorkSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Проекты
+            Лидерборд
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Избранные работы</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Топ токены платформы</p>
         </div>
 
         <div className="space-y-6 md:space-y-8">
-          {[
-            {
-              number: "01",
-              title: "ТехноСтарт",
-              category: "Корпоративный портал",
-              year: "2024",
-              direction: "left",
-            },
-            {
-              number: "02",
-              title: "АльфаТрейд",
-              category: "Финтех платформа",
-              year: "2024",
-              direction: "right",
-            },
-            {
-              number: "03",
-              title: "МедиаПульс",
-              category: "Медиа сервис",
-              year: "2023",
-              direction: "left",
-            },
-          ].map((project, i) => (
-            <ProjectCard key={i} project={project} index={i} isVisible={isVisible} />
+          {leaderboard.map((project, i) => (
+            <LeaderCard key={i} project={project} index={i} isVisible={isVisible} />
           ))}
         </div>
       </div>
@@ -52,12 +55,12 @@ export function WorkSection() {
   )
 }
 
-function ProjectCard({
+function LeaderCard({
   project,
   index,
   isVisible,
 }: {
-  project: { number: string; title: string; category: string; year: string; direction: string }
+  project: { number: string; title: string; category: string; stat: string; direction: string }
   index: number
   isVisible: boolean
 }) {
@@ -88,7 +91,10 @@ function ProjectCard({
           <p className="font-mono text-xs text-foreground/50 md:text-sm">{project.category}</p>
         </div>
       </div>
-      <span className="font-mono text-xs text-foreground/30 md:text-sm">{project.year}</span>
+      <div className="flex items-center gap-2">
+        <Icon name="TrendingUp" size={14} className="text-foreground/40" />
+        <span className="font-mono text-sm text-foreground/60 md:text-base">{project.stat}</span>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,28 @@
 import { useReveal } from "@/hooks/use-reveal"
 
+const features = [
+  {
+    title: "Создание токена",
+    description: "Запусти собственный ERC-20 или BEP-20 токен за несколько минут без знания кода",
+    direction: "top",
+  },
+  {
+    title: "Лидерборд",
+    description: "Соревнуйся с другими участниками — рост токена = рост в рейтинге",
+    direction: "right",
+  },
+  {
+    title: "Стейкинг",
+    description: "Замораживай токены и получай пассивный доход от комиссий платформы",
+    direction: "left",
+  },
+  {
+    title: "Аналитика",
+    description: "Дашборд в реальном времени: цена, объём, держатели, история транзакций",
+    direction: "bottom",
+  },
+]
+
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
 
@@ -15,34 +38,13 @@ export function ServicesSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Услуги
+            Возможности
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Наши компетенции</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Что ты получаешь</p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
-          {[
-            {
-              title: "Веб-разработка",
-              description: "Создание современных веб-приложений любой сложности",
-              direction: "top",
-            },
-            {
-              title: "UI/UX Дизайн",
-              description: "Проектирование удобных и красивых интерфейсов",
-              direction: "right",
-            },
-            {
-              title: "Мобильные приложения",
-              description: "Кроссплатформенная разработка для iOS и Android",
-              direction: "left",
-            },
-            {
-              title: "Консалтинг",
-              description: "Техническая экспертиза и стратегическое планирование",
-              direction: "bottom",
-            },
-          ].map((service, i) => (
+          {features.map((service, i) => (
             <ServiceCard key={i} service={service} index={i} isVisible={isVisible} />
           ))}
         </div>

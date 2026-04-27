@@ -1,6 +1,12 @@
 import { MagneticButton } from "@/components/magnetic-button"
 import { useReveal } from "@/hooks/use-reveal"
 
+const stats = [
+  { value: "12K+", label: "Участников", sublabel: "Активных держателей токенов", direction: "right" },
+  { value: "340+", label: "Токенов", sublabel: "Запущено на платформе", direction: "left" },
+  { value: "$4.2M", label: "Объём", sublabel: "Торгов за последний месяц", direction: "right" },
+]
+
 export function AboutSection({ scrollToSection }: { scrollToSection?: (index: number) => void }) {
   const { ref, isVisible } = useReveal(0.3)
 
@@ -11,7 +17,6 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
-          {/* Left side - Story */}
           <div>
             <div
               className={`mb-6 transition-all duration-700 md:mb-12 ${
@@ -19,11 +24,11 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               }`}
             >
               <h2 className="mb-3 font-sans text-3xl font-light leading-[1.1] tracking-tight text-foreground md:mb-4 md:text-6xl lg:text-7xl">
-                Создаем
+                Про
                 <br />
-                будущее
+                токен
                 <br />
-                <span className="text-foreground/40">цифровых</span>
+                <span className="text-foreground/40">и проект</span>
               </h2>
             </div>
 
@@ -34,21 +39,16 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                Мы команда дизайнеров, разработчиков и технологов, которые создают исключительные цифровые продукты.
+                Мы создаём платформу, где каждый может запустить собственный токен и соревноваться за место в топе лидерборда.
               </p>
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
-                Каждый проект — это возможность исследовать новые решения и раздвигать границы возможного.
+                Никаких барьеров — только честная конкуренция, прозрачность блокчейна и сообщество единомышленников.
               </p>
             </div>
           </div>
 
-          {/* Right side - Stats with creative layout */}
           <div className="flex flex-col justify-center space-y-6 md:space-y-12">
-            {[
-              { value: "150+", label: "Проектов", sublabel: "Реализовано по всему миру", direction: "right" },
-              { value: "8", label: "Лет", sublabel: "Опыта и инноваций", direction: "left" },
-              { value: "12", label: "Наград", sublabel: "Отраслевое признание", direction: "right" },
-            ].map((stat, i) => {
+            {stats.map((stat, i) => {
               const getRevealClass = () => {
                 if (!isVisible) {
                   return stat.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
@@ -84,10 +84,10 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           style={{ transitionDelay: "750ms" }}
         >
           <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(4)}>
-            Начать проект
+            Создать токен
           </MagneticButton>
           <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(1)}>
-            Смотреть работы
+            Смотреть лидерборд
           </MagneticButton>
         </div>
       </div>
